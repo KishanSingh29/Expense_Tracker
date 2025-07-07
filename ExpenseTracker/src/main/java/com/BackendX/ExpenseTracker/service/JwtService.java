@@ -17,7 +17,8 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    public static final String SECRET = "357638792F423F4428472B4B6250655368566D597133743677397A2443264629";
+    public static final String SECRET = "9MKlqIk9TROO+I2woeRyFdssg2jH4/gSfU/NmicYGAo=";
+
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -62,7 +63,7 @@ public class JwtService {
 
     private String createToken(Map<String, Object> claims, String username) {
         return Jwts.builder()
-                .setClaims(claims)
+                .setClaims(claims) // claims ke andar data kaie add hoga bu chatghpt recent chat
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis()+1000*60*1))
