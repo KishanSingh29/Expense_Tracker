@@ -1,6 +1,7 @@
 package com.BackendX.ExpenseTracker.service;
 
 import com.BackendX.ExpenseTracker.entities.UserInfo;
+
 import com.BackendX.ExpenseTracker.model.UserInfoDto;
 import com.BackendX.ExpenseTracker.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -24,11 +25,12 @@ import java.util.UUID;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 
-    @Autowired
-    private final UserRepository userRepository;
 
     @Autowired
-    private final PasswordEncoder passwordEncoder;
+    private  UserRepository userRepository;
+
+    @Autowired
+    private  PasswordEncoder passwordEncoder;
 
 
     private static final Logger log = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
@@ -44,7 +46,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("could not found user..!!");
         }
         log.info("User Authenticated Successfully..!!!");
-        return new CustomUserDetails(user);
+        return new CustomUserDetails(user);  // iski jaga builder bhi use ho sakta tha journal entry ki jaise or customuserdetails ke through hi kyu use huaa or uska use kya hai
     }
 
     public UserInfo checkIfUserAlreadyExist(UserInfoDto userInfoDto){
@@ -52,7 +54,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     public Boolean signupUser(UserInfoDto userInfoDto){
-        //        ValidationUtil.validateUserAttributes(userInfoDto);
+        //        ValidationUtil.validateUserAttributes(userInfoDto); define a function to check password and email is correct
         userInfoDto.setPassword(passwordEncoder.encode(userInfoDto.getPassword()));
         if(Objects.nonNull(checkIfUserAlreadyExist(userInfoDto))){
             return false;

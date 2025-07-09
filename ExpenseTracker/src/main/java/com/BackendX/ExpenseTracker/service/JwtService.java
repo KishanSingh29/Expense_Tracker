@@ -4,6 +4,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
+@Data
+@AllArgsConstructor
 public class JwtService {
     public static final String SECRET = "9MKlqIk9TROO+I2woeRyFdssg2jH4/gSfU/NmicYGAo=";
 

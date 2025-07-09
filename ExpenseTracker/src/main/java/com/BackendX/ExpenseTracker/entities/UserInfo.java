@@ -2,10 +2,9 @@ package com.BackendX.ExpenseTracker.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import com.BackendX.ExpenseTracker.entities.UserRole;
+
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
+@Getter
 public class UserInfo {
 
     @Id
@@ -25,6 +25,7 @@ public class UserInfo {
     private String username;
 
     private String password;
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

@@ -3,15 +3,23 @@ package com.BackendX.ExpenseTracker.model;
 import com.BackendX.ExpenseTracker.entities.UserInfo;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import lombok.*;
 
-@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class UserInfoDto extends UserInfo {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserInfoDto {
 
-    private String firstName; // first_name
+    private String username;
+    private String password;
 
-    private String lastName; //last_name
-
+    private String firstName;
+    private String lastName;
     private Long phoneNumber;
 
-    private String email; // email
+    private String email;
+
+
+
+
 }
